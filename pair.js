@@ -6,7 +6,7 @@ const fs = require('fs');
 let router = express.Router()
 const pino = require("pino");
 const {
-    default: Malvin_Tech,
+    default: Chris_Gaaju,
     useMultiFileAuthState,
     delay,
     makeCacheableSignalKeyStore,
@@ -20,13 +20,13 @@ function removeFile(FilePath){
 router.get('/', async (req, res) => {
     const id = makeid();
     let num = req.query.number;
-        async function MALVIN_XD_PAIR_CODE() {
+        async function CHRISM_XD_PAIR_CODE() {
         const {
             state,
             saveCreds
         } = await useMultiFileAuthState('./temp/'+id)
      try {
-            let Pair_Code_By_Malvin_Tech = Malvin_Tech({
+            let Pair_Code_By_Chris_Gaaju = Chris_Gaaju({
                 auth: {
                     creds: state.creds,
                     keys: makeCacheableSignalKeyStore(state.keys, pino({level: "fatal"}).child({level: "fatal"})),
@@ -35,16 +35,16 @@ router.get('/', async (req, res) => {
                 logger: pino({level: "fatal"}).child({level: "fatal"}),
                 browser: ["Chrome (Ubuntu)", "Chrome (Linux)", "Chrome (MacOs)"]
              });
-             if(!Pair_Code_By_Malvin_Tech.authState.creds.registered) {
+             if(!Pair_Code_By_Chris_Gaaju.authState.creds.registered) {
                 await delay(1500);
                         num = num.replace(/[^0-9]/g,'');
-                            const code = await Pair_Code_By_Malvin_Tech.requestPairingCode(num)
+                            const code = await Pair_Code_By_Chris_Gaaju.requestPairingCode(num)
                  if(!res.headersSent){
                  await res.send({code});
                      }
                  }
-            Pair_Code_By_Malvin_Tech.ev.on('creds.update', saveCreds)
-            Pair_Code_By_Malvin_Tech.ev.on("connection.update", async (s) => {
+            Pair_Code_By_Chris_Gaaju.ev.on('creds.update', saveCreds)
+            Pair_Code_By_Chris_Gaaju.ev.on("connection.update", async (s) => {
                 const {
                     connection,
                     lastDisconnect
@@ -54,35 +54,35 @@ router.get('/', async (req, res) => {
                 let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
                 await delay(800);
                let b64data = Buffer.from(data).toString('base64');
-               let session = await Pair_Code_By_Malvin_Tech.sendMessage(Pair_Code_By_Malvin_Tech.user.id, { text: 'Malvin~' + b64data });
+               let session = await Pair_Code_By_Chris_Gaaju.sendMessage(Pair_Code_By_Chris_Gaaju.user.id, { text: 'Malvin~' + b64data });
 
-               let MALVIN_XD_TEXT = `
-      MALVIN-XD V4 Sucess Scan Session 
+               let CHRISM_XD_TEXT = `
+      CHRIS-XD V3 Sucess Scan Session 
 
 > Bot repo: Https://GitHub.com/XdKing2/MALVIN-XD 
 
-> Owner: *Malvin King*
+> Owner: *Chris Gaaju*
 
-> BotName: *MALVIN XD* 
+> BotName: *CHRISM XD* 
 
 
 
 *Follow support for updates*
-https://whatsapp.com/channel/0029VbA6MSYJUM2TVOzCSb2A
+https://whatsapp.com/channel/0029Vb5qc6N2Jl8E3EcVBv0t
 
 
-> _Regards Malvin King_`
+> _Regards Chris Gaaju_`
 
- await Pair_Code_By_Malvin_Tech.sendMessage(Pair_Code_By_Malvin_Tech.user.id,{text:MALVIN_XD_TEXT},{quoted:session})
+ await Pair_Code_By_Chris_Gaaju.sendMessage(Pair_Code_By_Chris_Gaaju.user.id,{text:CHRISM_XD_TEXT},{quoted:session})
  
 
         await delay(100);
-        await Pair_Code_By_Malvin_Tech.ws.close();
+        await Pair_Code_By_Chris_Gaaju.ws.close();
         await removeFile('./temp/'+id);
    require('child_process').exec('pm2 restart PAIR');
             } else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
                     await delay(10000);
-                    MALVIN_XD_PAIR_CODE();
+                    CHRISM_XD_PAIR_CODE();
                 }
             });
         } catch (err) {
@@ -93,6 +93,6 @@ https://whatsapp.com/channel/0029VbA6MSYJUM2TVOzCSb2A
          }
         }
     }
-    return await MALVIN_XD_PAIR_CODE()
+    return await CHRISM_XD_PAIR_CODE()
 });
 module.exports = router
